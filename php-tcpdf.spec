@@ -11,6 +11,7 @@ Source0:	http://dl.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
 # Source0-md5:	21f1ee9ec26e8ce059f870899260baa6
 URL:		http://www.tecnick.com/public/code/cp_dpage.php?aiocp_dp=tcpdf
 BuildRequires:	rpmbuild(macros) >= 1.268
+BuildRequires:	unzip
 Requires(triggerpostun):	sed >= 4.0
 Requires:	php-common >= 4:5.0
 BuildArch:	noarch
