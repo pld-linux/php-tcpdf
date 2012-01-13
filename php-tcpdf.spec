@@ -9,7 +9,7 @@ License:	LGPL v2.1
 Group:		Development/Languages/PHP
 Source0:	http://dl.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
 # Source0-md5:	d1aee70c99ea8f15bbfdb33d24a17872
-URL:		http://www.tecnick.com/public/code/cp_dpage.php?aiocp_dp=tcpdf
+URL:		http://www.tcpdf.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
 Requires(triggerpostun):	sed >= 4.0
