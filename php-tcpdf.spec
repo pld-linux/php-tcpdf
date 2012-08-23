@@ -4,16 +4,16 @@
 Summary:	TCPDF - PHP class for PDF
 Name:		php-tcpdf
 Version:	5.9.150
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Development/Languages/PHP
-Source0:	http://dl.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
+Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
 # Source0-md5:	87bae23323f2f6bca1ec0c2680674307
 URL:		http://www.tcpdf.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
 Requires(triggerpostun):	sed >= 4.0
-Requires:	php-common >= 4:5.0
+Requires:	php(core) >= 5.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
