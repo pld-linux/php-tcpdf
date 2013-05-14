@@ -4,7 +4,7 @@
 Summary:	TCPDF - PHP class for PDF
 Name:		php-tcpdf
 Version:	6.0.014
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Development/Languages/PHP
 Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
@@ -46,7 +46,7 @@ Dokumentacja do %{name}.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_examplesdir}/%{name}-%{version}}
 
-cp -a *.php config fonts images $RPM_BUILD_ROOT%{_appdir}
+cp -a *.php config fonts images include $RPM_BUILD_ROOT%{_appdir}
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
