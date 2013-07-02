@@ -18,7 +18,6 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_appdir		%{php_data_dir}/tcpdf
-%define		_phpdocdir		%{_docdir}/phpdoc
 
 %description
 Generic TCPDF screenshot TCPDF is a PHP class for generating PDF
@@ -37,8 +36,6 @@ install -d $RPM_BUILD_ROOT{%{_appdir},%{_examplesdir}/%{name}-%{version}}
 cp -a *.php config fonts include $RPM_BUILD_ROOT%{_appdir}
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-
-install -d $RPM_BUILD_ROOT%{_phpdocdir}/%{name}
 
 rm -rf $RPM_BUILD_ROOT%{_appdir}/fonts/*-*
 rm -rf $RPM_BUILD_ROOT%{_appdir}/fonts/utils
