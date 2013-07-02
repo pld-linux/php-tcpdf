@@ -3,12 +3,12 @@
 %define		ver	%(echo %{version} | tr . _)
 Summary:	TCPDF - PHP class for PDF
 Name:		php-tcpdf
-Version:	6.0.014
-Release:	2
+Version:	6.0.020
+Release:	1
 License:	LGPL v2.1
 Group:		Development/Languages/PHP
 Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
-# Source0-md5:	600624aa5b85b9cd3c57050fa63db55b
+# Source0-md5:	4265be83441f4783452437c55d777fb6
 URL:		http://www.tcpdf.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
@@ -25,18 +25,6 @@ Generic TCPDF screenshot TCPDF is a PHP class for generating PDF
 documents without requiring external extensions. TCPDF Supports UTF-8,
 Unicode, RTL languages and HTML.
 
-%package phpdoc
-Summary:	Online manual for %{name}
-Summary(pl.UTF-8):	Dokumentacja online do %{name}
-Group:		Documentation
-Requires:	php-dirs
-
-%description phpdoc
-Documentation for %{name}.
-
-%description phpdoc -l pl.UTF-8
-Dokumentacja do %{name}.
-
 %prep
 %setup -q -n tcpdf
 
@@ -46,12 +34,11 @@ Dokumentacja do %{name}.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_examplesdir}/%{name}-%{version}}
 
-cp -a *.php config fonts images include $RPM_BUILD_ROOT%{_appdir}
+cp -a *.php config fonts include $RPM_BUILD_ROOT%{_appdir}
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 install -d $RPM_BUILD_ROOT%{_phpdocdir}/%{name}
-cp -a doc/* $RPM_BUILD_ROOT%{_phpdocdir}/%{name}
 
 rm -rf $RPM_BUILD_ROOT%{_appdir}/fonts/*-*
 rm -rf $RPM_BUILD_ROOT%{_appdir}/fonts/utils
@@ -65,7 +52,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_appdir}
 
 %{_examplesdir}/%{name}-%{version}
-
-%files phpdoc
-%defattr(644,root,root,755)
-%{_phpdocdir}/%{name}
