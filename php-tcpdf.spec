@@ -3,12 +3,12 @@
 %define		ver	%(echo %{version} | tr . _)
 Summary:	TCPDF - PHP class for PDF
 Name:		php-tcpdf
-Version:	6.0.043
+Version:	6.0.060
 Release:	1
 License:	LGPL v2.1
 Group:		Development/Languages/PHP
 Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
-# Source0-md5:	a0f1b81da48f71e215a9aaa24c463155
+# Source0-md5:	c971abbf545d5702b395b90aa8a9cd8d
 URL:		http://www.tcpdf.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
@@ -28,6 +28,11 @@ Unicode, RTL languages and HTML.
 %setup -q -n tcpdf
 
 %{__sed} -i -e 's,\r$,,' *.TXT
+
+%build
+for a in /usr/share/fonts/TTF/DejaVuS*; do
+	php tools/tcpdf_addfont.php -t TrueTypeUnicode -i $a;
+done
 
 %install
 rm -rf $RPM_BUILD_ROOT
