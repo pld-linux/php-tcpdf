@@ -3,12 +3,12 @@
 %define		ver	%(echo %{version} | tr . _)
 Summary:	TCPDF - PHP class for PDF
 Name:		php-tcpdf
-Version:	6.0.084
+Version:	6.2.6
 Release:	1
 License:	LGPL v2.1
 Group:		Development/Languages/PHP
 Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
-# Source0-md5:	1d3a5385a550bdc2808ca45126a78a18
+# Source0-md5:	9185f0ca4ecc65fb8a1dc115ab96b52b
 URL:		http://www.tcpdf.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
