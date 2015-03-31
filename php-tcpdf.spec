@@ -1,5 +1,5 @@
-# TODO
-# - config to /etc
+# NOTE:
+# - *.z are just gzcompress-ed .ttf files
 %define		pkgname	tcpdf
 %define		ver	%(echo %{version} | tr . _)
 Summary:	TCPDF - PHP class for PDF
@@ -23,6 +23,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_appdir		%{php_data_dir}/%{pkgname}
+%define		_sysconfdir	/etc/%{pkgname}
 
 %description
 Generic TCPDF screenshot TCPDF is a PHP class for generating PDF
@@ -75,9 +76,9 @@ done
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},%{_examplesdir}/%{name}-%{version}}
-
-cp -a *.php config fonts include $RPM_BUILD_ROOT%{_appdir}
+install -d $RPM_BUILD_ROOT{%{_appdir},%{_sysconfdir},%{_bindir},%{_examplesdir}/%{name}-%{version}}
+cp -a *.php fonts include $RPM_BUILD_ROOT%{_appdir}
+cp -p config/*.php $RPM_BUILD_ROOT%{_sysconfdir}
 cp -a build/fonts/* $RPM_BUILD_ROOT%{_appdir}/fonts
 install -p tools/tcpdf_addfont.php $RPM_BUILD_ROOT%{_bindir}/tcpdf_addfont
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
@@ -88,9 +89,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG.TXT README.TXT
+%dir %attr(750,root,http) %{_sysconfdir}
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/tcpdf_config.php
 %attr(755,root,root) %{_bindir}/tcpdf_addfont
 %dir %{_appdir}
-%{_appdir}/config
 %{_appdir}/include
 %{_appdir}/tcpdf*.php
 
