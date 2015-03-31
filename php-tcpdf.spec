@@ -23,6 +23,18 @@ Generic TCPDF screenshot TCPDF is a PHP class for generating PDF
 documents without requiring external extensions. TCPDF Supports UTF-8,
 Unicode, RTL languages and HTML.
 
+%package examples
+Summary:	TCPDF example programs
+Summary(pl.UTF-8):	TCPDF programy przykładowe
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description examples
+TCPDF example programs.
+
+%description examples -l pl.UTF-8
+TCPDF - przykładowe programy.
+
 %prep
 %setup -q -n tcpdf
 %undos *.TXT
@@ -49,4 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGELOG.TXT README.TXT
 %{_appdir}
+
+%files examples
+%defattr(644,root,root,755)
 %{_examplesdir}/%{name}-%{version}
