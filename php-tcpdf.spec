@@ -10,6 +10,7 @@ Group:		Development/Languages/PHP
 Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
 # Source0-md5:	9185f0ca4ecc65fb8a1dc115ab96b52b
 URL:		http://www.tcpdf.org/
+BuildRequires:	fonts-TTF-DejaVu
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
 Requires:	php(core) >= 5.0
