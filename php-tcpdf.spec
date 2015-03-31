@@ -28,6 +28,14 @@ Generic TCPDF screenshot TCPDF is a PHP class for generating PDF
 documents without requiring external extensions. TCPDF Supports UTF-8,
 Unicode, RTL languages and HTML.
 
+%package fonts-dejavu
+Summary:	DejaVu fonts for TCPDF
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description fonts-dejavu
+This package allow to use system DejaVu font faces in TCPDF.
+
 %package examples
 Summary:	TCPDF example programs
 Summary(pl.UTF-8):	TCPDF programy przykładowe
@@ -41,11 +49,12 @@ TCPDF example programs.
 TCPDF - przykładowe programy.
 
 %prep
-%setup -q -n tcpdf
+%setup -qc
+mv tcpdf/* .
 %undos *.TXT
 
 # remove bundled fonts
-rm -r fonts/dejavu-fonts-ttf-* fonts/freefont-*
+rm -r fonts/dejavu-fonts-ttf-* fonts/freefont-* fonts/ae_fonts_*
 
 %build
 for a in %{_fontsdir}/TTF/DejaVuS*; do
@@ -67,7 +76,39 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGELOG.TXT README.TXT
 %attr(755,root,root) %{_bindir}/tcpdf_addfont
-%{_appdir}
+%dir %{_appdir}
+%{_appdir}/config
+%{_appdir}/include
+%{_appdir}/tcpdf*.php
+
+%dir %{_appdir}/fonts
+%{_appdir}/fonts/aealarabiya*
+%{_appdir}/fonts/aefurat*
+%{_appdir}/fonts/cid0*
+%{_appdir}/fonts/courier*
+%{_appdir}/fonts/freemono*
+%{_appdir}/fonts/freesans*
+%{_appdir}/fonts/freeserif*
+%{_appdir}/fonts/helvetica*
+%{_appdir}/fonts/hysmyeongjostdmedium*
+%{_appdir}/fonts/kozgopromedium*
+%{_appdir}/fonts/kozminproregular*
+%{_appdir}/fonts/msungstdlight*
+%{_appdir}/fonts/pdfacourier*
+%{_appdir}/fonts/pdfahelvetica*
+%{_appdir}/fonts/pdfasymbol*
+%{_appdir}/fonts/pdfatimes*
+%{_appdir}/fonts/pdfazapfdingbats*
+%{_appdir}/fonts/stsongstdlight*
+%{_appdir}/fonts/symbol*
+%{_appdir}/fonts/times*
+%{_appdir}/fonts/uni2cid_*
+%{_appdir}/fonts/zapfdingbats*
+
+%files fonts-dejavu
+%defattr(644,root,root,755)
+%{_appdir}/fonts/dejavusans*
+%{_appdir}/fonts/dejavuserif*
 
 %files examples
 %defattr(644,root,root,755)
