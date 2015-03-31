@@ -15,6 +15,7 @@ BuildRequires:	%{php_name}-cli
 BuildRequires:	%{php_name}-pcre
 BuildRequires:	%{php_name}-zlib
 BuildRequires:	fonts-TTF-DejaVu
+BuildRequires:	fonts-TTF-freefont
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
 Requires:	php(core) >= 5.0
@@ -35,6 +36,14 @@ Requires:	%{name} = %{version}-%{release}
 
 %description fonts-dejavu
 This package allow to use system DejaVu font faces in TCPDF.
+
+%package fonts-freefont
+Summary:	GNU FreeFonts for TCPDF
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description fonts-freefont
+This package allow to use system GNU FreeFont font faces in TCPDF.
 
 %package examples
 Summary:	TCPDF example programs
@@ -57,8 +66,11 @@ mv tcpdf/* .
 rm -r fonts/dejavu-fonts-ttf-* fonts/freefont-* fonts/ae_fonts_*
 
 %build
-for a in %{_fontsdir}/TTF/DejaVuS*; do
-	%{__php} tools/tcpdf_addfont.php -t TrueTypeUnicode -i $a
+pkgs="fonts-TTF-DejaVu fonts-TTF-freefont"
+install -d build/fonts
+for pkg in $pkgs; do
+	fonts=$(rpm -ql $pkg | grep %{_fontsdir}/TTF | xargs | tr ' ' ',')
+	%{__php} tools/tcpdf_addfont.php -t TrueTypeUnicode -i $fonts -o build/fonts
 done
 
 %install
@@ -66,6 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},%{_examplesdir}/%{name}-%{version}}
 
 cp -a *.php config fonts include $RPM_BUILD_ROOT%{_appdir}
+cp -a build/fonts/* $RPM_BUILD_ROOT%{_appdir}/fonts
 install -p tools/tcpdf_addfont.php $RPM_BUILD_ROOT%{_bindir}/tcpdf_addfont
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -86,9 +99,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_appdir}/fonts/aefurat*
 %{_appdir}/fonts/cid0*
 %{_appdir}/fonts/courier*
-%{_appdir}/fonts/freemono*
-%{_appdir}/fonts/freesans*
-%{_appdir}/fonts/freeserif*
 %{_appdir}/fonts/helvetica*
 %{_appdir}/fonts/hysmyeongjostdmedium*
 %{_appdir}/fonts/kozgopromedium*
@@ -109,6 +119,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_appdir}/fonts/dejavusans*
 %{_appdir}/fonts/dejavuserif*
+
+%files fonts-freefont
+%defattr(644,root,root,755)
+%{_appdir}/fonts/freemono*
+%{_appdir}/fonts/freesans*
+%{_appdir}/fonts/freeserif*
 
 %files examples
 %defattr(644,root,root,755)
