@@ -31,7 +31,7 @@ Unicode, RTL languages and HTML.
 
 %package fonts-dejavu
 Summary:	DejaVu fonts for TCPDF
-Group:		Development/Libraries
+Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 
 %description fonts-dejavu
@@ -39,7 +39,7 @@ This package allow to use system DejaVu font faces in TCPDF.
 
 %package fonts-freefont
 Summary:	GNU FreeFonts for TCPDF
-Group:		Development/Libraries
+Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 
 %description fonts-freefont
@@ -48,7 +48,7 @@ This package allow to use system GNU FreeFont font faces in TCPDF.
 %package examples
 Summary:	TCPDF example programs
 Summary(pl.UTF-8):	TCPDF programy przykładowe
-Group:		Development/Libraries
+Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 
 %description examples
