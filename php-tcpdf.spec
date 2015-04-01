@@ -1,7 +1,9 @@
 # NOTE:
 # - *.z are just gzcompress-ed .ttf files
-%define		pkgname	tcpdf
 %define		ver	%(echo %{version} | tr . _)
+%define		pkgname	tcpdf
+%define		php_min_version 5.2.7
+%include	/usr/lib/rpm/macros.php
 Summary:	TCPDF - PHP class for PDF
 Name:		php-%{pkgname}
 Version:	6.2.6
@@ -16,9 +18,19 @@ BuildRequires:	%{php_name}-pcre
 BuildRequires:	%{php_name}-zlib
 BuildRequires:	fonts-TTF-DejaVu
 BuildRequires:	fonts-TTF-freefont
+BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
-Requires:	php(core) >= 5.0
+Requires:	php(bcmath)
+Requires:	php(core) >= %{php_min_version}
+Requires:	php(date)
+Requires:	php(gd)
+Requires:	php(hash)
+Requires:	php(json)
+Requires:	php(mbstring)
+Requires:	php(openssl)
+Requires:	php(pcre)
+Requires:	php(xml)
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
