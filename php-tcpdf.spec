@@ -7,7 +7,7 @@
 Summary:	TCPDF - PHP class for PDF
 Name:		php-%{pkgname}
 Version:	6.2.12
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Development/Languages/PHP
 Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
@@ -31,6 +31,7 @@ Requires:	php(mbstring)
 Requires:	php(openssl)
 Requires:	php(pcre)
 Requires:	php(xml)
+Suggests:	php-tcpdf-fonts-dejavu
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
