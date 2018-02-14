@@ -6,12 +6,12 @@
 %include	/usr/lib/rpm/macros.php
 Summary:	TCPDF - PHP class for PDF
 Name:		php-%{pkgname}
-Version:	6.2.12
-Release:	2
+Version:	6.2.13
+Release:	1
 License:	LGPL v2.1
 Group:		Development/Languages/PHP
 Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
-# Source0-md5:	904160b3eb1ba1ed2881d2d64b782486
+# Source0-md5:	c92b5f6553132edf4bc5cdc263abc77a
 URL:		http://www.tcpdf.org/
 BuildRequires:	%{php_name}-cli
 BuildRequires:	%{php_name}-pcre
@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGELOG.TXT README.TXT
+%doc CHANGELOG.TXT README.md
 %dir %attr(750,root,http) %{_sysconfdir}
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/tcpdf_config.php
 %attr(755,root,root) %{_bindir}/tcpdf_addfont
