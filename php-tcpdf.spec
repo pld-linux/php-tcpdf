@@ -14,6 +14,7 @@ Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
 # Source0-md5:	3b78dfde75c18aa5618875cfae911aaf
 URL:		http://www.tcpdf.org/
 BuildRequires:	%{php_name}-cli
+BuildRequires:	%{php_name}-devel
 BuildRequires:	%{php_name}-pcre
 BuildRequires:	%{php_name}-zlib
 BuildRequires:	fonts-TTF-DejaVu
