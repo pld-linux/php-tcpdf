@@ -3,7 +3,6 @@
 %define		ver	%(echo %{version} | tr . _)
 %define		pkgname	tcpdf
 %define		php_min_version 5.2.7
-%include	/usr/lib/rpm/macros.php
 Summary:	TCPDF - PHP class for PDF
 Name:		php-%{pkgname}
 Version:	6.3.2
