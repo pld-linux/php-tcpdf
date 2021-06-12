@@ -1,16 +1,16 @@
 # NOTE:
 # - *.z are just gzcompress-ed .ttf files
-%define		ver	%(echo %{version} | tr . _)
 %define		pkgname	tcpdf
 %define		php_min_version 5.2.7
 Summary:	TCPDF - PHP class for PDF
 Name:		php-%{pkgname}
-Version:	6.3.2
+Version:	6.4.1
 Release:	1
 License:	LGPL v2.1
 Group:		Development/Languages/PHP
-Source0:	http://downloads.sourceforge.net/tcpdf/tcpdf_%{ver}.zip
-# Source0-md5:	3b78dfde75c18aa5618875cfae911aaf
+Source0:	https://github.com/tecnickcom/TCPDF/archive/refs/tags/%{version}.tar.gz
+# Source0-md5:	955fa68f9e66ae6e942f5164b9d4010a
+Patch0:		shebang.patch
 URL:		http://www.tcpdf.org/
 BuildRequires:	%{php_name}-cli
 BuildRequires:	%{php_name}-devel
@@ -72,9 +72,9 @@ TCPDF example programs.
 TCPDF - przykładowe programy.
 
 %prep
-%setup -qc
-mv tcpdf/* .
+%setup -q -n TCPDF-%{version}
 %undos *.TXT
+%patch0 -p1
 
 # remove bundled fonts
 rm -r fonts/dejavu-fonts-ttf-* fonts/freefont-* fonts/ae_fonts_*
