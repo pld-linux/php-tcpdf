@@ -4,12 +4,12 @@
 %define		php_min_version 5.2.7
 Summary:	TCPDF - PHP class for PDF
 Name:		php-%{pkgname}
-Version:	6.4.1
+Version:	6.4.2
 Release:	1
 License:	LGPL v2.1
 Group:		Development/Languages/PHP
 Source0:	https://github.com/tecnickcom/TCPDF/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	955fa68f9e66ae6e942f5164b9d4010a
+# Source0-md5:	9f595ca6649db615695baec65c6bc019
 Patch0:		shebang.patch
 URL:		http://www.tcpdf.org/
 BuildRequires:	%{php_name}-cli
