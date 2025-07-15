@@ -74,7 +74,7 @@ TCPDF - przykładowe programy.
 %prep
 %setup -q -n TCPDF-%{version}
 %undos *.TXT
-%patch0 -p1
+%patch -P0 -p1
 
 # remove bundled fonts
 rm -r fonts/dejavu-fonts-ttf-* fonts/freefont-* fonts/ae_fonts_*
