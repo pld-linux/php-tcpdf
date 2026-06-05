@@ -1,15 +1,15 @@
 # NOTE:
 # - *.z are just gzcompress-ed .ttf files
 %define		pkgname	tcpdf
-%define		php_min_version 5.2.7
+%define		php_min_version 7.1.0
 Summary:	TCPDF - PHP class for PDF
 Name:		php-%{pkgname}
-Version:	6.11.2
+Version:	6.11.3
 Release:	1
-License:	LGPL v2.1
+License:	LGPL v3+
 Group:		Development/Languages/PHP
 Source0:	https://github.com/tecnickcom/TCPDF/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	c1f0e2eff35566999d1a8c2aadbeb61f
+# Source0-md5:	b6f6f758736aad0b7e20e9a0942027ef
 Patch0:		shebang.patch
 URL:		http://www.tcpdf.org/
 BuildRequires:	%{php_name}-cli
@@ -22,6 +22,7 @@ BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	php(bcmath)
 Requires:	php(core) >= %{php_min_version}
+Requires:	php(curl)
 Requires:	php(date)
 Requires:	php(gd)
 Requires:	php(hash)
